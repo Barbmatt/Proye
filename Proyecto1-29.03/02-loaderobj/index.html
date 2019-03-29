@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>OBJ Parser</title>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+	<script src="../99-common/glmatrix/gl-matrix-min.js"></script>
+	<script src="../99-common/VertexAttributeInfo.js"></script>
+	<script src="../99-common/VAOHelper.js"></script>
+	<script src="../99-common/ShaderProgramHelper.js"></script>
+	<script src="../99-common/Utils.js"></script>
+	<script src="../99-common/OBJParser.js"></script>
+	<script src="files/shaders/vertex.glsl"></script>
+	<script src="files/shaders/fragment.glsl"></script>
+	<script src="../Modelos/satelite.js"></script>
+	<script src="../Modelos/planeta.js"></script>
+	<script src="js/app.js"></script>
+	<LINK REL=StyleSheet HREF="style.css" TYPE="text/css" MEDIA=screen>
+</head>
+<body>
+	
+
+	<div id='myDiv'>
+		<h1>Escena</h1>
+		<div id='canvasDiv'>
+			<canvas id='webglCanvas' width = "1000" height = "700">
+			</canvas>
+		</div>
+		<div id='controlDiv'>
+			<table id='myTable'>
+				<tr id='myTableRow'>
+					<th colspan="2">Planeta Central</th>
+				</tr>
+				<tr>
+					<td>Rotación del planeta(sobre sí mismo)</td>
+					<td><input type="range" min="0" max="360" value="0" oninput="onSliderRotationPlanet(this);"></td>
+				</tr>
+			</table>
+			<table id='myTable'>
+				<tr id='myTableRow'>
+					<th colspan="2">Satelite orbitando</th>
+				</tr>
+				<tr>
+					<td>Rotación del satelite (Sobre sí mismo)</td>
+					<td><input type="range" min="0" max="360" value="0" oninput="onSliderRotationSatellite(this);"></td>
+				</tr>
+				<tr>
+					<td>Rotación del satelite (Orbitando sobre el planeta)</td>
+					<td><input type="range" min="0" max="360" value="0" oninput="onSliderRotationSatellitePlanet(this);"></td>
+				</tr>
+			</table>
+			<table id='myTable'>
+				<tr id='myTableRow'>
+					<th colspan="2">Cámara</th>
+				</tr>
+				<tr>
+					<td>Rotación de la cámara (Sobre la escena)</td>
+					<td><input type="range" min="0" max="360" value="0" oninput="onSliderRotationCamera(this);"></td>
+
+				</tr>
+				<tr >
+					<td><button onclick="onLoad();">Rotacion Automatica Izq</button></td>
+					<td><button onclick="onLoad();">Rotacion Automatica Der</button></td>
+				</tr>
+
+				<tr>
+					<td>Zoom in/out</td>
+					<td><input type="range" step="0.001" min="0.01" max="0.24" value="0.08" oninput="onSliderZoomCamera(this);"></td>
+				</tr>
+			</table>
+			
+			<button onclick="onLoad();">Load</button>
+			<button onclick="onRender();">Render</button>
+		</div>
+	</div>
+
+</body>
+</html>
